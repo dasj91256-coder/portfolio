@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jamuna Portfolio</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fffdfd;
+    color: #292331;
+    line-height: 1.6;
+}
+
+header {
+    background: #292331;
+    padding: 18px 5%;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 25px;
+    font-family: Georgia, serif;
+    font-style: italic;
+}
+
+.logo span {
+    color: #f4a9c4;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 8px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #f4a9c4;
+}
+
+.hero {
+    background: linear-gradient(120deg, #fff0f6, #ffffff, #f8dce8);
+    padding: 80px 8%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 35px;
+}
+
+.hero-text {
+    max-width: 550px;
+}
+
+.hero-text h1 {
+    font-family: Georgia, serif;
+    font-size: 55px;
+    line-height: 1.2;
+    margin: 15px 0;
+}
+
+.hero-text h1 span {
+    color: #d95f91;
+    font-style: italic;
+}
+
+.hero-text h3 {
+    margin-bottom: 15px;
+}
+
+.hero-text p {
+    color: #766b78;
+}
+
+button, .btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 25px;
+    background: #d95f91;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+button:hover, .btn:hover {
+    background: #292331;
+}
+
+.profile {
+    text-align: center;
+}
+
+.profile img {
+    width: 260px;
+    height: 310px;
+    object-fit: cover;
+    border: 8px solid white;
+    border-radius: 140px 140px 25px 25px;
+    box-shadow: 0 10px 30px #d9b6c5;
+    background: #fbe5ed;
+}
+
+.profile label {
+    display: block;
+    margin-top: 12px;
+    color: #c34e7d;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#photoInput {
+    display: none;
+}
+
+section {
+    padding: 65px 8%;
+}
+
+.section-title {
+    font-family: Georgia, serif;
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.section-title span {
+    color: #d95f91;
+}
+
+.subtitle {
+    color: #766b78;
+    margin-bottom: 25px;
+}
+
+.about-box {
+    background: #fff0f6;
+    padding: 30px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.skills {
+    background: #fff0f6;
+}
+
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.card {
+    background: white;
+    padding: 25px 15px;
+    text-align: center;
+    border-radius: 15px;
+    border: 1px solid #f0dce5;
+    box-shadow: 0 5px 15px #ddd4da;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card .icon {
+    font-size: 35px;
+}
+
+.card h3 {
+    margin-top: 8px;
+}
+
+.education-card {
+    display: flex;
+    gap: 20px;
+    background: #fff0f6;
+    padding: 25px;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.achievement-grid,
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.achievement-card,
+.project-card {
+    padding: 25px;
+    background: white;
+    border: 1px solid #f0dce5;
+    border-radius: 16px;
+    box-shadow: 0 5px 15px #ddd4da;
+}
+
+.achievement-card .icon,
+.project-card .icon {
+    font-size: 40px;
+}
+
+.project-card {
+    border-top: 5px solid #e879a5;
+}
+
+.project-card p,
+.achievement-card p {
+    color: #766b78;
+    margin-top: 10px;
+}
+
+.contact {
+    background: #fff0f6;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.contact-info, form {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.contact-info p {
+    margin: 15px 0;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 13px;
+    margin: 10px 0;
+    border: 1px solid #e8ceda;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+}
+
+textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+#status {
+    color: #47815c;
+    margin-top: 10px;
+}
+
+footer {
+    background: #292331;
+    color: white;
+    padding: 22px;
+    text-align: center;
+}
+
+@media (max-width: 750px) {
+    header {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    nav {
+        text-align: center;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 5px;
+    }
+
+    .hero-text h1 {
+        font-size: 42px;
+    }
+
+    .skill-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .achievement-grid,
+    .project-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">My Portfolio <span>♡</span></div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- HOME -->
+<section class="hero" id="home">
+
+    <div class="hero-text">
+        <p> BCA STUDENT | FUTURE DEVELOPER </p>
+
+        <h1>Hello, I'm<br>
+            <span>jamuna</span>
+        </h1>
+
+        <h3>Creative Mind. Curious Heart. Tech Learner.</h3>
+
+        <p>
+            I am a BCA student passionate about programming,
+            creative design, and web development.
+            I enjoy learning new technologies and building
+            creative digital projects.
+        </p>
+
+        <a class="btn" href="#https://github.com/dasj91256-coder">Explore My Projects</a>
+        <a class="btn" href="#contact">Contact Me</a>
+    </div>
+
+    <div class="profile">
+        <img id="profilePhoto"
+        src="c:\Users\dasj9\OneDrive\Desktop\jamuna.jpg.jpeg"
+        alt="Profile Photo">
+
+        <label for="photoInput">＋ Upload Your Profile Photo</label>
+        <input type="file" id="photoInput" accept="image/*">
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+
+    <h2 class="section-title">About <span>Me</span></h2>
+
+    <p class="subtitle">A little introduction about myself.</p>
+
+    <div class="about-box">
+        <p>
+            Hello! I am a Bachelor of Computer Applications (BCA)
+            student interested in computer science, programming,
+            and technology.
+        </p>
+
+        <br>
+
+        <p>
+            I enjoy learning programming languages, creating websites,
+            and developing useful applications. I believe in improving
+            my knowledge through practice and creativity.
+        </p>
+
+        <br>
+
+        <p>
+            My career goal is to become a skilled software developer
+            and contribute to innovative technology projects.
+        </p>
+    </div>
+
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+
+    <h2 class="section-title">My <span>Skills</span></h2>
+
+    <p class="subtitle">Technologies I am learning and practising.</p>
+
+    <div class="skill-grid">
+
+        <div class="card">
+            <div class="icon">🌐</div>
+            <h3>HTML</h3>
+            <p>Web Structure</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎨</div>
+            <h3>CSS</h3>
+            <p>Web Design</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">✨</div>
+            <h3>JavaScript</h3>
+            <p>Web Interactivity</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🐍</div>
+            <h3>Python</h3>
+            <p>Programming</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">☕</div>
+            <h3>Java</h3>
+            <p>Object-Oriented Programming</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🗄️</div>
+            <h3>SQL</h3>
+            <p>Database Management</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">⚙️</div>
+            <h3>Flask</h3>
+            <p>Backend Development</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🟢</div>
+            <h3>Node.js</h3>
+            <p>Server-Side Development</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+
+    <h2 class="section-title">My <span>Education</span></h2>
+
+    <div class="education-card">
+        <div style="font-size:35px;">🎓</div>
+
+        <div>
+            <h3>Bachelor of Computer Applications (BCA)</h3>
+            <p>SVRFGC</p>
+            <p>Year: 2024 – 2026</p>
+            <p>Learning programming, databases, and web development.</p>
+        </div>
+    </div>
+
+    <div class="education-card">
+        <div style="font-size:35px;">📚</div>
+
+        <div>
+            <h3>SVRFGC PU</h3>
+            <p>SVRFGC</p>
+            <p>2022-2024</p>
+            <p>HEBA</p>
+        </div>
+    </div>
+
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements" class="skills">
+
+    <h2 class="section-title">My <span>Achievements</span></h2>
+
+    <p class="subtitle">
+        My certificates, awards, and accomplishments.
+    </p>
+
+    <div class="achievement-grid">
+
+        <div class="achievement-card">
+            <div class="icon">🏆</div>
+            <h3>Certificates</h3>
+            <p>Python Basics - Infosys Springboard , Web Development -NPTEL</p>
+        </div>
+
+        <div class="achievement-card">
+            <div class="icon">💻</div>
+            <h3>Project Completion</h3>
+            <p>Projects based on HTML , CSS , JAVASCRIPT </p>
+        </div>
+
+        <div class="achievement-card">
+            <div class="icon">🌟</div>
+            <h3>Technical Learning</h3>
+            <p>Attended AI Workshop and Code Debugging Event 2k24</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PROJECTS -->
+<section id="https://github.com/dasj91256-coder">
+
+    <h2 class="section-title">My <span>Projects</span></h2>
+
+    <p class="subtitle">Some examples of my learning projects.</p>
+
+    <div class="project-grid">
+
+        <div class="project-card">
+            <div class="icon">💗</div>
+            <h3>Student Portfolio</h3>
+            <p>A personal website developed using HTML, CSS, and JavaScript.</p>
+            <a href="https://github.com/dasj91256-coder" target="_blank">View on github</a>
+        </div>
+
+        <div class="project-card">
+            <div class="icon">🎮</div>
+            <h3>Gaming Accessories Shop</h3>
+            <p>A CRUD project for managing gaming products using Flask and Node.js.</p>
+            <a href="https://github.com/dasj91256-coder" target="_blank">View on github</a>
+        </div>
+
+        <div class="project-card">
+            <div class="icon">📚</div>
+            <h3>Student Record System</h3>
+            <p>A database project for storing and managing student information.</p>
+            <a href="https://github.com/dasj91256-coder" target="_blank">View on github</a>
+        </div>
+
+
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+    <h2 class="section-title">Contact <span>Me</span></h2>
+
+    <p class="subtitle">Let's connect and share ideas!</p>
+
+    <div class="contact-grid">
+
+        <div class="contact-info">
+            <h3>Get In Touch ♡</h3>
+            <p>📧 dasj91256@gmail.com</p>
+            <p>📍 Banglore</p>
+            <p>💻 GitHub: https://github.com/dasj91256-coder</p>
+        </div>
+
+        <form id="contactForm">
+
+            <input type="text" id="name"
+            placeholder="jamuna" required>
+
+            <input type="email"
+            placeholder="dasj91256@gmail.com" required>
+
+            <textarea placeholder="Hello contact me!!"
+            required></textarea>
+
+            <button type="submit">Send Message</button>
+
+            <p id="status"></p>
+
+        </form>
+
+    </div>
+
+</section>
+
+<footer>
+    <p>Made with ♡ | © <span id="year"></span> jamuna | BCA Student Portfolio</p>
+</footer>
+
+<script>
+    // Profile photo upload
+    document.getElementById("photoInput")
+    .addEventListener("change", function(event) {
+
+        const file = event.target.files[0];
+
+        if (file) {
+            document.getElementById("profilePhoto").src =
+                URL.createObjectURL(file);
+        }
+    });
+
+    // Contact form demo
+    document.getElementById("contactForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const name = document.getElementById("name").value;
+
+        document.getElementById("status").textContent =
+            "Thank you, " + name +
+            "! This demo form does not send an actual email.";
+
+        this.reset();
+    });
+
+    // Automatic year
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+</script>
+
+</body>
+</html>
